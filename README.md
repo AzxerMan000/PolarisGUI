@@ -12,3 +12,69 @@ The implementation leverages Roblox's native TweenService extensively, creating 
 Theme customization extends beyond preset palettes, allowing granular color overrides for specific interface elements. The notification system delivers non-intrusive status updates with categorized severity indicators. Window management supports minimization, repositioning, and visibility toggling through standardized methods.
 
 This framework successfully bridges aesthetic sophistication with practical scripting functionality, establishing new standards for Roblox GUI development through thoughtful design decisions and robust technical implementation.
+
+
+
+
+
+
+# USAGE
+
+```
+
+local Polaris =loadstring(game:HttpGet("your-url-here"))()
+
+-- Create GUI
+local GUI = Polaris.new({
+    Name = "POLARIS",
+    Theme = "Discord"
+})
+
+-- Make tabs
+local Main = GUI:AddChannel("Main", "#")
+local Combat = GUI:AddChannel("Combat", "⚔")
+local Visuals = GUI:AddChannel("Visuals", "👁")
+
+-- Main tab
+local section1 = Main:AddSection("Movement")
+section1:AddToggle("Speed Hack", false, function(v)
+    print(v)
+end)
+
+section1:AddSlider("WalkSpeed", 16, 500, 16, "", function(v)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = v
+end)
+
+local section2 = Main:AddSection("Misc")
+section2:AddButton("Reset", "Danger", function()
+    game.Players.LocalPlayer.Character:BreakJoints()
+end)
+
+section2:AddTextBox("Message", "Type here...", function(text)
+    print(text)
+end)
+
+-- Combat tab
+local combatSection = Combat:AddSection("Aimbot")
+combatSection:AddToggle("Enabled", false, function(v)
+    print("Aimbot:", v)
+end)
+
+combatSection:AddDropdown("Target", {"Head", "Torso"}, "Head", function(v)
+    print(v)
+end)
+
+-- Visuals tab
+local espSection = Visuals:AddSection("ESP")
+espSection:AddToggle("Boxes", false, function(v)
+    print("ESP:", v)
+end)
+
+-- Toggle key
+game:GetService("UserInputService").InputBegan:Connect(function(input)
+    if input.KeyCode == Enum.KeyCode.RightShift then
+        GUI:Toggle()
+    end
+end) 
+
+```
