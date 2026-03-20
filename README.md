@@ -11,7 +11,7 @@ Polaris GUI is a Discord-inspired Roblox framework that dropped as open source. 
 # USAGE
 
 ```
-local Polaris =loadstring(game:HttpGet("https://raw.githubusercontent.com/AzxerMan000/PolarisGUI/refs/heads/main/Source/main.lua"))()
+local Polaris = loadstring(game:HttpGet("https://raw.githubusercontent.com/AzxerMan000/PolarisGUI/refs/heads/main/Source/main.lua"))()
 
 -- Create GUI
 local GUI = Polaris.new({
